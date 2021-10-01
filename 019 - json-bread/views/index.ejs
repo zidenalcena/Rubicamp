@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>json-bread</title>
+  </head>
+  <body>
+    <div class="container" style="padding: 20px">
+      <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
+      <h2>Filters</h2>
+      <form action="/search" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" />ID
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="ID"
+                  name="ID"
+                  placeholder="ID"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" />String
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="String"
+                  name="String"
+                  placeholder="String"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" />Integer
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Integer"
+                  name="Integer"
+                  placeholder="Integer"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" />Float
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Float"
+                  name="Float"
+                  placeholder="Float"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" />Date
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="Date"
+                  name="Date"
+                  placeholder="start date"
+                />
+              </div>
+            </div>
+            to
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="Date"
+                  name="Date"
+                  placeholder="end date"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" />Boolean
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <select id="inputState" class="form-control">
+                <option selected>Choose the boolean...</option>
+                <option value="a" >true</option>
+                <option value="" >false</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+      <br />
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">String</th>
+            <th scope="col">Integer</th>
+            <th scope="col">Float</th>
+            <th scope="col">Date</th>
+            <th scope="col">Boolean</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% newData.forEach(d => { %>
+          <tr>
+            <th scope="row"><%= d.ID %></th>
+            <td><%= d.String %></td>
+            <td><%= d.Integer %></td>
+            <td><%= d.Float %></td>
+            <td><%= d.displayedDate %></td>
+            <td><%= d.Boolean %></td>
+            <td>
+              <a href="/edit/<%= d.ID %>" style="color: white">
+                <button type="button" class="btn btn-success">
+                  Edit
+                </button>
+              </a>
+              <a
+                href="/delete/<%= d.ID %>"
+                style="color: white"
+                onclick="return confirm('Delete ?')"
+              >
+                <button type="button" class="btn btn-danger">Delete</button>
+              </a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+              >Previous</a
+            >
+          </li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#"
+              >1 <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="/add" style="color: white">
+        <button type="button" class="btn btn-primary">
+          Add
+        </button>
+      </a>
+    </div>
+  </body>
+</html>
