@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>PMS</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-5">
+                <form class="form-signin" action="" method="POST" style="margin-top:30%" method="POST">
+                    <div class="">
+                        <img class="mb-4" src="http://www.onepiece-streaming.com/Images/logo-onepiece.png" alt=""
+                            width="300" height="90">
+                        <h1 class="h3 mb-3 font-weight-normal">Project Management System</h1>
+                    </div>
+                    <%if(loginMessage.length > 0){%>
+                    <div class="alert alert-danger" role="alert">
+                        <%= loginMessage %>
+                    </div>
+                    <%}%>
+
+                    <div>
+                        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+                            autofocus style="margin-bottom:2%">
+                    </div>
+
+                    <div>
+                        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                    </div>               
+                    
+                    <div class="checkbox mb-3">
+                        <div class="row justify-content-md-right" style="margin-left:1%">
+                            <label>
+                                <input type="checkbox" value="remember-me text-right"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <p class="mt-5 mb-3 text-muted">Membuat Project Management System</p>
+                    <p class="mt-0 mb-0 text-muted">&copy; 2017-2019</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

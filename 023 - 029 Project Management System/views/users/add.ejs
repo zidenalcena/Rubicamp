@@ -1,0 +1,91 @@
+<%- include('../partials/headers') %>
+
+<div>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <h3 style="margin-top:5%; margin-left:7%">Add New Member</h3>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/users/add" method="POST">
+                        <div class="form-group">
+                            <label for="inputAddress2">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password"
+                                name="password">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname"
+                                    placeholder="First Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname"
+                                    placeholder="Last Name">
+                            </div>
+                        </div>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-2 pt-0">Position</legend>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="manager" name="roles" value="Manager"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="manager">Manager</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="Software Developer" name="roles" value="Software Developer"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="Software Developer">Software Developer</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check disabled">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="qualityassurance" name="roles"
+                                                value="Quality Assurance" class="custom-control-input">
+                                            <label class="custom-control-label" for="qualityassurance">Quality
+                                                Assurance</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-2 pt-0">Working Status</legend>
+                                <div class="form-check ml-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="isfulltime" id="fulltime"
+                                            value="true">
+                                        <label class="custom-control-label" for="fulltime">Fulltime</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="parttime" name="isfulltime"
+                                            value="true">
+                                        <label class="custom-control-label" for="parttime">Parttime</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Save</button>
+                        <a href='/users/list' class="btn btn-outline-warning">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    ​
+</div>

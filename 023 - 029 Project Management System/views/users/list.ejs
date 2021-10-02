@@ -1,0 +1,185 @@
+<%- include('../partials/headers') %>
+
+<br><br>
+<h1 style="margin-top:15px;margin-left:30px"><b>Users [ADMIN only]</b></h1>
+<hr>
+</hr>
+<h3 class="col-sm-1" style="color:darkslategrey;border-radius: 5px;margin-top:0px;margin-left:30px;">Filters</h3>
+
+<div class="container">
+    <form action="/users/list" method="GET">
+        <input type="hidden" name="page" value="1">
+        <div class="form-group row">
+            <div class="col-form-label">
+                <input class="form-check-input" type="checkbox" id="cuser" name="cuser"
+                    <%= (query.cuser) ? 'checked': '' %>>
+            </div>
+            <label for="cuser" class="col-sm-2 col-form-label">User ID</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="id" name="id" placeholder="User ID" value="<%= query.id %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-form-label">
+                <input class="form-check-input" type="checkbox" id="cemail" name="cemail"
+                    <%= (query.cemail) ? 'checked': '' %>>
+            </div>
+            <label for="cemail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                    value="<%= query.email %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-form-label">
+                <input class="form-check-input" type="checkbox" id="cname" name="cname"
+                    <%= (query.cname) ? 'checked': '' %>>
+            </div>
+            <label for="cname" class="col-sm-2 col-form-label">User Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="name" name="name" placeholder="User Name"
+                    value="<%= query.name %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-form-label">
+                <input class="form-check-input" type="checkbox" id="cposition" name="cposition"
+                    <%= (query.cposition) ? 'checked': '' %>>
+            </div>
+            <label for="cposition" class="col-sm-2 col-form-label">Position</label>
+            <div class="col-sm-9">
+                <select id="inputState" class="form-control" name="roles">
+                    <option value="">Position</option>
+                    <option value="Manager" <%= query.roles == "Manager" ? 'selected' : '' %>>Manager
+                    </option>
+                    <option value="Software Developer" <%= query.roles == "Software Developer" ? 'selected' : '' %>>
+                        Software
+                        Developer</option>
+                    <option value="Quality Assurance" <%= query.roles == "Quality Assurance" ? 'selected' : '' %>>
+                        Quality
+                        Assurance</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-form-label">
+                <input class="form-check-input" type="checkbox" id="cfulltime" name="cfulltime"
+                    <%= (query.cfulltime) ? 'checked': '' %>>
+            </div>
+            <label for="cfulltime" class="col-sm-2 col-form-label">Working Status</label>
+            <div class="col-sm-9">
+                <select id="inputState" class="form-control" name="fulltime">
+                    <option value="">Working Status</option>
+                    <option value="true" <%= query.fulltime == true ? 'selected' : '' %>>Full Time</option>
+                    <option value="false" <%= query.fulltime == false ? 'selected' : '' %>>Part Time</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+        <a href='/users/list' class="btn btn-outline-warning">Reset</a>
+</div>
+<br>
+<hr>
+<h3 class="col-sm-2" style="color:darkslategrey;border-radius: 5px;margin-top:0px;margin-left:30px;">Option
+</h3>
+<!-- <div class="container"> -->
+<fieldset class="form-group" style="margin-left:50px">
+    <form method="post" action="/users/option">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Columns</legend>
+            <div class="col-sm-10">
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                    <input class="custom-control-input" type="checkbox" name="idoption" id="idoption" value="true"
+                        <%= option.idoption == "true" ? 'checked': ''%>>
+                    <label class="custom-control-label" for="idoption">
+                        ID
+                    </label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                    <input class="custom-control-input" type="checkbox" name="emailoption" id="emailoption" value="true"
+                        <%= option.emailoption == "true" ? 'checked': ''%>>
+                    <label class="custom-control-label" for="emailoption">
+                        Email
+                    </label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                    <input class="custom-control-input" type="checkbox" name="nameoption" id="nameoption" value="true"
+                        <%= option.nameoption == "true" ? 'checked': ''%>>
+                    <label class="custom-control-label" for="nameoption">
+                        Name
+                    </label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                    <input class="custom-control-input" type="checkbox" name="rolesoption" id="rolesoption" value="true"
+                        <%= option.rolesoption == "true" ? 'checked': ''%>>
+                    <label class="custom-control-label" for="rolesoption">
+                        Position
+                    </label>
+                </div>
+                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                    <input class="custom-control-input" type="checkbox" name="fulltimeoption" id="fulltimeoption"
+                        value="true" <%= option.fulltimeoption == "true" ? 'checked': ''%>>
+                    <label class="custom-control-label" for="fulltimeoption">
+                        Working Status
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Apply</button>
+    </form>
+</fieldset>
+<!-- </div> -->
+<hr>
+<h3 class="col-sm-2" style="color:darkslategrey;border-radius: 5px;margin-top:0px;margin-left:30px;">Table Users
+</h3>
+<br>
+<div class="container">
+    <div style="margin-right:60px">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <% if(option.idoption == "true"){ %><th scope="col">User ID</th><% }%>
+                    <% if(option.emailoption == "true"){ %><th scope="col">Email</th><% }%>
+                    <% if(option.nameoption == "true"){ %><th scope="col">Name</th><% }%>
+                    <% if(option.rolesoption == "true"){ %><th scope="col">Position</th><% }%>
+                    <% if(option.fulltimeoption == "true"){ %><th scope="col">Working Status</th><% }%>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((item) => {%> <tr>
+                    <% if(option.idoption == "true"){ %><th scope="row"><%= item.userid %></th><% }%>
+                    <% if(option.emailoption == "true"){ %><th><%= item.email %></th><% }%>
+                    <% if(option.nameoption == "true"){ %><td><%= item.firstname %> <%= item.lastname %></td><% }%>
+                    <% if(option.rolesoption == "true"){ %><td><%= item.roles %></td><% }%>
+                    <% if(option.fulltimeoption == "true"){ %><td> <%if (item.isfulltime == true ){%> fulltime
+                        <%} else {%> parttime <%}%></td><% }%>
+                    <td><a href='/users/edit/<%= item.userid %>' class="btn btn-outline-secondary">Edit</a>
+                        <a href='/users/delete/<%= item.userid %>' class="btn btn-outline-danger"
+                            onclick="return confirm('Delete This User?')">Delete</a></td>
+                </tr>
+                <%})%>
+            </tbody>
+        </table>
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item<%= page == 1 ? ' disabled' : '' %>">
+                    <a class="page-link" href="/users<%= url.replace(`${parseInt(page)}`,`${parseInt(page) - 1 }`)%>"
+                        tabindex="-1">Previous</a>
+                </li>
+                <% for(let i = 1; i <= pages; i++){ %>
+                <li class="page-item<%= i == page ? ' active' : '' %>">
+                    <a class="page-link" href="/users<%= url.replace(`page=${page}`,`page=${i}`) %>">
+                        <%= i %></a>
+                </li>
+                <% } %>
+                <li class="page-item<%= page == pages ? ' disabled' : '' %>">
+                    <a class="page-link"
+                        href="/users<%= url.replace(`${parseInt(page)}`,`${parseInt(page) + 1 }`)%>">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <a href="/users/add" class="btn btn-outline-primary" style="margin-left:0px">Add</a>
+    </form>
+</div>
+<br></br>

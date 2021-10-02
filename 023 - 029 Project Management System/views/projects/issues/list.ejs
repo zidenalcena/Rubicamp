@@ -1,0 +1,287 @@
+<%- include('../../partials/headers') %>
+
+<div class="d-flex" style="margin-top: 5%" id="wrapper">
+
+    <%- include('../../partials/sidebar') %>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <h1><b>Issues</b></h1>
+            <hr />
+            <h2><b>Filters</b></h1>
+        </div>
+
+        <form>
+            <div class="container-fluid">
+                <input type="hidden" name="page" value="1">
+                <div class="container-fluid">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                            <div class="col-form-label">
+                                <input class="form-check-input" type="checkbox" id="cid" name="cid"
+                                    <%= (query.cid) ? 'checked': '' %>>
+                            </div>
+                            <label for="cid" class="col-sm-2 col-form-label">User ID</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="issueid" name="issueid"
+                                    placeholder="User ID" value="<%= query.issueid %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-form-label">
+                                <input class="form-check-input" type="checkbox" id="csubject" name="csubject"
+                                    <%= (query.csubject) ? 'checked': '' %>>
+                            </div>
+                            <label for="csubject" class="col-sm-2 col-form-label">Subject</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                    placeholder="Subject" value="<%= query.subject %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-form-label">
+                                <input class="form-check-input" type="checkbox" id="ctracker" name="ctracker"
+                                    <%= (query.ctracker) ? 'checked': '' %>>
+                            </div>
+                            <label for="ctracker" class="col-sm-2 col-form-label">Tracker</label>
+                            <div class="col-sm-9">
+                                <select id="tracker" class="form-control" name="tracker">
+                                    <option value="">Choose</option>
+                                    <option value="Bug" <%= query.ctracker == 'Bug' ? 'selected' : '' %>>Bug</option>
+                                    <option value="Feature" <%= query.ctracker == 'Feature' ? 'selected' : '' %>>Feature
+                                    </option>
+                                    <option value="Support" <%= query.ctracker == 'Support' ? 'selected' : '' %>>Support
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-secondary">Search</button>
+                        <a href='' class="btn btn-outline-warning">Reset</a>
+                    </div>
+                </div>
+        </form>
+        <hr>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <h3 class="col-sm-1" style="left: -40px;bottom: 5px"><b>Option</b>
+                </h3>
+            </div>
+        </div>
+        <form method="POST" action="/projects/optionissue/<%= projectid %>">
+            <table width="100%">
+                <tr>
+                    <th scope="row">Column</th>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="idoption" id="idoption"
+                                value="true" <%= option.idoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="idoption">
+                                ID
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="statustoption" id="statustoption"
+                                value="true" <%= option.statustoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="statustoption">
+                                Status
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="startdateoption"
+                                id="startdateoption" value="true"
+                                <%= option.startdateoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="startdateoption">
+                                Start Date
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="doneoption" id="doneoption"
+                                value="true" <%= option.doneoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="doneoption">
+                                Done
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr width="10%">
+                    <th scope="row"></th>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="subjectoption" id="subjectoption"
+                                value="true" <%= option.subjectoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="subjectoption">
+                                Subject
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="priorityoption"
+                                id="priorityoption" value="true" <%= option.priorityoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="priorityoption">
+                                Priority
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="duedateoption" id="duedateoption"
+                                value="true" <%= option.duedateoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="duedateoption">
+                                Due Date
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="authoroption" id="authoroption"
+                                value="true" <%= option.authoroption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="authoroption">
+                                Author
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="10%" scope="row"></th>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="trackeroption" id="trackeroption"
+                                value="true" <%= option.trackeroption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="trackeroption">
+                                Tracker
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="descriptioption"
+                                id="descriptioption" value="true"
+                                <%= option.descriptioption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="descriptioption">
+                                Description
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="estimatedoption"
+                                id="estimatedoption" value="true"
+                                <%= option.estimatedoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="estimatedoption">
+                                Estimated Time
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="assigneoption" id="assigneoption"
+                                value="true" <%= option.assigneoption == "true" ? 'checked': '' %>>
+                            <label class="custom-control-label" for="assigneoption">
+                                Assigne
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-outline-primary">Apply</button>
+        </form>
+        <!-- <fieldset class="form-group">
+            <form method="post" action="/projects/members/list">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Columns</legend>
+                    <div class="col-sm-10">
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="idckmembers" id="checkbox1"
+                                value="true">
+                            <label class="custom-control-label" for="checkbox1">
+                                Project ID
+                            </label>
+                        </div>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="nameckmembers" id="checkbox2"
+                                value="true">
+                            <label class="custom-control-label" for="checkbox2">
+                                Name
+                            </label>
+                        </div>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input class="custom-control-input" type="checkbox" name="postckmembers" id="checkbox3"
+                                value="true">
+                            <label class="custom-control-label" for="checkbox3">
+                                Position
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Apply</button>
+
+            </form>
+        </fieldset> -->
+        <br>
+        <div style="margin-right:100px">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+
+                        <% if(option.idoption == "true"){ %><th scope="col">User ID</th><% }%>
+                        <% if(option.subjectoption == "true"){ %><th scope="col">Subject</th><% }%>
+                        <% if(option.trackeroption == "true"){ %><th scope="col">Tracker</th><% }%>
+                        <% if(option.statustoption == "true"){ %><th scope="col">Status</th><% }%>
+                        <% if(option.priorityoption == "true"){ %><th scope="col">Priority</th><% }%>
+                        <% if(option.descriptioption == "true"){ %><th scope="col">Description</th><% }%>
+                        <% if(option.startdateoption == "true"){ %><th scope="col">Start Date</th><% }%>
+                        <% if(option.duedateoption == "true"){ %><th scope="col">Due Date</th><% }%>
+                        <% if(option.estimatedoption == "true"){ %><th scope="col">Estimated Date</th><% }%>
+                        <% if(option.doneoption == "true"){ %><th scope="col">Done</th><% }%>
+                        <% if(option.authoroption == "true"){ %><th scope="col">Author</th><% }%>
+                        <% if(option.assigneoption == "true"){ %><th scope="col">Assigne</th><% }%>
+
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach((item) => {%><tr>
+                        <% if(option.idoption == "true"){%><th scope="row"><%= item.issueid%></th><% }%>
+                        <% if(option.subjectoption == "true"){%><td> <%= item.subject %> </td><% }%>
+                        <% if(option.trackeroption == "true"){%><td><%= item.tracker %></td><% }%>
+                        <% if(option.statustoption == "true"){%><td><%= item.status %></td><% }%>
+                        <% if(option.priorityoption == "true"){%><td><%= item.priority %></td><% }%>
+                        <% if(option.descriptioption == "true"){%><td><%= item.description %></td><% }%>
+                        <% if(option.startdateoption == "true"){%><td><%= item.startdate %></td><% }%>
+                        <% if(option.duedateoption == "true"){%><td><%= item.duedate %></td><% }%>
+                        <% if(option.estimatedoption == "true"){%><td><%= item.estimatedtime %></td><% }%>
+                        <% if(option.doneoption == "true"){%><td><%= item.done %>%</td><% }%>
+                        <% if(option.authoroption == "true"){%><td><%= item.author %></td><% }%>
+                        <% if(option.assigneoption == "true"){%><td><%= item.assignee %></td><% }%>
+
+                        <td><a href='/projects/issuesedit/<%= projectid %>/<%= item.issueid %>' class="btn btn-outline-secondary">Edit</a>
+                            <a href='/projects/issuesdelete/<%= projectid %>/<%= item.issueid %>' class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <%})%>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/projects">Previous</a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" href="/projects"></a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" href="/projects">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <a href="/projects/issuesadd/<%= projectid %>" class="btn btn-outline-primary" style="margin-left:2px">Add</a>
+    </div>
+    <br>
+</div>

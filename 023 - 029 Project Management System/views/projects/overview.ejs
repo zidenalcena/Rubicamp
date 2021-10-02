@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<%- include('../partials/headers') %>
+
+<div class="d-flex" style="margin-top: 5%" id="wrapper">
+
+    <%- include('../partials/sidebar') %>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <h1><b>Overview</b></h1>
+            <hr />
+            <h2><b>Library System</b></h1>
+        </div>
+        <div class="container-fluid">
+            <div class="">
+                <div class="card">
+                    <div class="card-body">
+                        <ul>
+                            <p>Issue Tracking</p>
+                            <li>Bug: <%= tracker.bug ? tracker.bug.rows[0].count : 0 %> Open /
+                                <%= tracker.bug ? tracker.bug.rows[0].closed : 0 %></li>
+                            <li>Feature: <%= tracker.feature ? tracker.feature.rows[0].count : 0 %> Open /
+                                <%= tracker.feature ? tracker.feature.rows[0].closed : 0 %></li>
+                            <li>Support: <%= tracker.support ? tracker.support.rows[0].count: 0 %> Open /
+                                <%= tracker.support ? tracker.support.rows[0].closed: 0 %></li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-body">
+                        <ul>
+                            <p>Members</p>
+                            <% data.forEach((item) => { %>
+                            <li> <%= item.firstname %> <%= item.lastname %> </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
